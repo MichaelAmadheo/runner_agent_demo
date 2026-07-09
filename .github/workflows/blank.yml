@@ -17,15 +17,15 @@ jobs:
 
       - name: Clone repository Docker
         run: |
-          git clone https://github.com/developerserasiautoraya/TRANSOL_TRAC_Dockerfile.git
+          git clone -https://github.com/developerserasiautoraya/TRANSOL_TRAC_Dockerfile.git
 
       - name: Clone package anti tampering
         run: |
-          git clone --branch 1.0.1 --single-branch https://github.com/developerserasiautoraya/SERA_Anti_Tampering_Package_Mobile.git
+          git clone --branch 1.1.0 --single-branch https://github.com/developerserasiautoraya/SERA_Anti_Tampering_Package_Mobile.git
 
       - name: Clone repository Project       
         run: |
-          git clone https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
+          git clone -branch production --single-branch https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
 
       - name: Copy package to main project and activate
         run: |
