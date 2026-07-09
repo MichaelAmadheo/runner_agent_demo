@@ -72,6 +72,17 @@ jobs:
           dart run build_runner clean
           dart run build_runner build --delete-conflicting-outputs
 
+      # - name: Build ipa
+      #   run: |
+      #     cd TRAC_TRACtoGo_Mobile
+      #     flutter build ipa \
+      #       --no-pub \
+      #       --flavor dev \
+      #       --release \
+      #       --export-options-plist ios/ExportOptions.plist \
+      #       --obfuscate \
+      #       --split-debug-info=build/ios/symbols \
+
       - name: Build ipa
         run: |
           cd TRAC_TRACtoGo_Mobile
@@ -79,7 +90,6 @@ jobs:
             --no-pub \
             --flavor dev \
             --release \
-            --export-options-plist ios/ExportOptions.plist \
             --obfuscate \
             --split-debug-info=build/ios/symbols \
 
