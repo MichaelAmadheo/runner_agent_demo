@@ -21,7 +21,7 @@ jobs:
 
       - name: Clone package anti tampering
         run: |
-          git clone --branch 1.1.0 --single-branch https://github.com/developerserasiautoraya/SERA_Anti_Tampering_Package_Mobile.git
+          git clone --branch 1.0.1 --single-branch https://github.com/developerserasiautoraya/SERA_Anti_Tampering_Package_Mobile.git
 
       - name: Clone repository Project       
         run: |
