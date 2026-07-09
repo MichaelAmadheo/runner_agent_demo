@@ -23,12 +23,16 @@ jobs:
         run: |
           git clone https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
 
-      # - name: Flutter setup and asset generation
-      #   run: |
-      #     cd TRAC_TRACtoGo_Mobile
-      #     flutter pub get
-      #     dart run build_runner clean
-      #     dart run build_runner build --delete-conflicting-outputs
+      - name: Copy env file
+        run: |
+          cp TTG_Env/env-mobile TRAC_TRACtoGo_Mobile/.env
+
+      - name: Flutter setup and asset generation
+        run: |
+          cd TRAC_TRACtoGo_Mobile
+          flutter pub get
+          dart run build_runner clean
+          dart run build_runner build --delete-conflicting-outputs
 
       - name: List files
         run: ls -la
