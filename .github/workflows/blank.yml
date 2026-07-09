@@ -19,13 +19,40 @@ jobs:
         run: |
           git clone https://github.com/developerserasiautoraya/TRANSOL_TRAC_Dockerfile.git
 
+      - name: Clone package anti tampering
+        run: |
+          git clone --branch 1.1.0 --single-branch https://github.com/developerserasiautoraya/SERA_Anti_Tampering_Package_Mobile.git
+
       - name: Clone repository Project       
         run: |
           git clone https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
 
+      - name: Copy package to main project and activate
+        run: |
+          cd SERA_Anti_Tampering_Package_Mobile
+
+          package_name=$(awk '/name:/ {print $2}' pubspec.yaml)
+          echo "Package Name detected: $package_name"
+
+          cd ..
+
+          mkdir -p TRAC_TRACtoGo_Mobile/plugin/$package_name
+          cp -r SERA_Anti_Tampering_Package_Mobile/. TRAC_TRACtoGo_Mobile/plugin/$package_name/
+          cd TRAC_TRACtoGo_Mobile
+          chmod +x registry_packages.sh
+          ./registry_packages.sh
+
       - name: Copy env file
         run: |
           cp TTG_Env/env-mobile TRAC_TRACtoGo_Mobile/.env
+
+      - name: Copy iOS Export Options
+        run: |
+          cp TTG_Env/ios_build_files/ExportOptions.plist TRAC_TRACtoGo_Mobile/ios/ExportOptions.plist
+
+      - name: Copy firebase app id
+        run: |
+          cp TRAC_TRACtoGo_Mobile/ios/config/dev/firebase_app_id_file_dev.json TRAC_TRACtoGo_Mobile/ios/firebase_app_id_file.json
 
       - name: Flutter setup and asset generation
         run: |
@@ -34,8 +61,8 @@ jobs:
           dart run build_runner clean
           dart run build_runner build --delete-conflicting-outputs
 
-      - name: List files
-        run: ls -la
+      # - name: List files
+      #   run: ls -la
 
       - name: Cleanup workspace
         if: always()
