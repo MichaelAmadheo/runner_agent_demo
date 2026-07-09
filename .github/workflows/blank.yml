@@ -11,20 +11,35 @@ jobs:
       - name: Print current directory
         run: pwd
 
-      - name: Clone repository TRACtoGo        
+      - name: Clone repository env
+        run: |
+          git clone https://github.com/developerserasiautoraya/TTG_Env.git
+
+      - name: Clone repository Docker
+        run: |
+          git clone https://github.com/developerserasiautoraya/TRANSOL_TRAC_Dockerfile.git
+
+      - name: Clone repository Project       
         run: |
           git clone https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
+
+      # - name: Flutter setup and asset generation
+      #   run: |
+      #     cd TRAC_TRACtoGo_Mobile
+      #     flutter pub get
+      #     dart run build_runner clean
+      #     dart run build_runner build --delete-conflicting-outputs
 
       - name: List files
         run: ls -la
 
-      # - name: Cleanup workspace
-      #   if: always()
-      #   run: |
-      #     find "$GITHUB_WORKSPACE" -mindepth 1 -delete
+      - name: Cleanup workspace
+        if: always()
+        run: |
+          find "$GITHUB_WORKSPACE" -mindepth 1 -delete
 
-      # - name: Verify cleanup
-      #   if: always()
-      #   run: |
-      #     echo "Workspace after cleanup:"
-      #     ls -la "$GITHUB_WORKSPACE"
+      - name: Verify cleanup
+        if: always()
+        run: |
+          echo "Workspace after cleanup:"
+          ls -la "$GITHUB_WORKSPACE"
