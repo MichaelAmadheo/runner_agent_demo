@@ -17,7 +17,7 @@ jobs:
 
       - name: Clone repository Docker
         run: |
-          git clone -https://github.com/developerserasiautoraya/TRANSOL_TRAC_Dockerfile.git
+          git clone https://github.com/developerserasiautoraya/TRANSOL_TRAC_Dockerfile.git
 
       - name: Clone package anti tampering
         run: |
