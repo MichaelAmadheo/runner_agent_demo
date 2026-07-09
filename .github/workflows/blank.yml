@@ -25,7 +25,7 @@ jobs:
 
       - name: Clone repository Project       
         run: |
-          git clone -branch production --single-branch https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
+          git clone --branch production --single-branch https://github.com/developerserasiautoraya/TRAC_TRACtoGo_Mobile.git
 
       - name: Copy package to main project and activate
         run: |
